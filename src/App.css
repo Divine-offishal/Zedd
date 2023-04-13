@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@font-face {
+  font-family: 'sci-fi';
+  src: url('Fonts/origintech_personal_use-webfont.woff2') format('woff2'),
+       url('Fonts/origintech_personal_use-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+@layer base {
+  html {
+      font-family: sci-fi, system-ui, sans-serif;
+  }
+}
+
