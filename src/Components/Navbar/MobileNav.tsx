@@ -20,7 +20,7 @@ const MobileNav = () => {
       <HiMenu className='text-5xl ml-auto' onClick={() => setOpen(true)}/>
     </div>
 
-    <nav ref={scope} className={`fixed top-0 transition-all duration-500 ease-in-out h-screen w-7/12 bg-accent z-30 md:hidden ${open? 'right-0': 'right-[-300px]'}`}>
+    <nav ref={scope} className={`fixed top-0 transition-all duration-500 ease-in-out h-screen w-7/12 bg-accent z-30 md:hidden ${open? 'right-0': 'right-[-400px]'}`}>
       <ul className=' space-y-20 space-x-10' >
         <HiX className='text-5xl ml-auto mt-6' onClick={() => setOpen(false)}/>
         <li >Home</li>
