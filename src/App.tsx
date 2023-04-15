@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navbar from './Components/Navbar/Navbar'
 import MobileNav from './Components/Navbar/MobileNav'
+import Hero from './Components/Hero'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +10,7 @@ function App() {
     <div className='h-screen w-screen bg-primary '>
       <Navbar/>
       <MobileNav/>
-      
+      <Hero/>
     </div>
   )
 }
