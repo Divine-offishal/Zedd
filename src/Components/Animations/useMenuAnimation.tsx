@@ -7,6 +7,7 @@ const useMenuAnimation = (open: boolean) => {
 
 
   useEffect(() => {
+
     animate(
       "li",
       open

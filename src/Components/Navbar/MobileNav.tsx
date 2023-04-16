@@ -15,7 +15,7 @@ const MobileNav = () => {
 
   return (
     <>
-    <div className='h-20 w-screen bg-secondary text-accent pt-4 md:hidden flex fixed top-0'>
+    <div className='h-20 w-screen bg-secondary text-accent pt-4 md:hidden flex fixed top-0 z-20'>
       <h1 className='text-4xl ml-4'>ZEDD's</h1>
       <HiMenu className='text-5xl ml-auto' onClick={() => setOpen(true)}/>
     </div>
