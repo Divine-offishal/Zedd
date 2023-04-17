@@ -5,6 +5,9 @@ import Hero from './Components/Hero'
 import Sales from './Components/Sales'
 import Repairs from './Components/Repairs'
 import Reviews from './Components/Reviews'
+import Footer from './Components/Footer'
+import Browse from './Pages/Browse'
+import Home from './Pages/Home'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,10 +16,9 @@ function App() {
     <div className='h-screen w-screen bg-primary overflow-x-hidden'>
       <Navbar/>
       <MobileNav/>
-      <Hero/>
-      <Sales/>
-      <Repairs/>
-      <Reviews/>
+      {/* <Browse/> */}
+      <Home/>
+      <Footer/>
     </div>
   )
 }

@@ -27,7 +27,7 @@ const reviewData:Data[] = [
 
 const Reviews = () => {
   return (
-    <div className='h-screen w-screen mt-10'>
+    <div className='min-h-screen w-screen mt-10'>
       <h1 className='text-center text-4xl text-secondary'>Reviews</h1>
       <div className='grid justify-items-center'>
         {

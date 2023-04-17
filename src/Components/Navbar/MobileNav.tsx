@@ -10,7 +10,7 @@ import useMenuAnimation from '../Animations/useMenuAnimation';
 
 const MobileNav = () => {
 
-  const [open, setOpen] = useState<boolean>(true)
+  const [open, setOpen] = useState<boolean>(false)
   const scope = useMenuAnimation(open);
 
   return (
