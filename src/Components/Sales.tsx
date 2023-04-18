@@ -1,6 +1,7 @@
 import React from 'react'
 import { Images } from '../assets/Images/Images'
 import { HiOutlineArrowCircleRight } from 'react-icons/hi'
+import { NavLink } from 'react-router-dom'
 
 const Sales = () => {
   return (
@@ -11,7 +12,9 @@ const Sales = () => {
           <div><b>Get your dream ride</b></div>
           <span className='text-2xl flex mt-4'>
             click and check our car sales!
-            <HiOutlineArrowCircleRight className='text-7xl shrink-0 text-accent md:ml-20 ml-4 animate-pulse'/>
+            <NavLink to='/sales'>
+              <HiOutlineArrowCircleRight className='text-7xl shrink-0 text-accent md:ml-20 ml-4 animate-pulse'/>
+            </NavLink>
           </span>
         </h1>
       </div>
