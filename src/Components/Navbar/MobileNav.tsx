@@ -56,14 +56,15 @@ const MobileNav = () => {
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  isActive ? "bg-secondary text-red-800" : ""
+                  isActive ? "bg-gradient-to-r from-secondary/95 to-secondary/20 h-auto w-auto rounded-l block text-accent" : ""
                 }
               >
-                <div className="h-auto w-auto px-2 py-1 rounded-l">
+                <div className="h-auto w-auto px-2 py-1">
                   {item.name}
                 </div>
               </NavLink>
             </li>
+            
           ))}
         </ul>
       </nav>

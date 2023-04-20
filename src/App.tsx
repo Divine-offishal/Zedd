@@ -1,20 +1,19 @@
-import { useState } from 'react'
-import Navbar from './Components/Navbar/Navbar'
-import MobileNav from './Components/Navbar/MobileNav'
-import Footer from './Components/Footer'
-import AppRoutes from './Routes/AppRoutes'
+
+import Navbar from "./Components/Navbar/Navbar";
+import MobileNav from "./Components/Navbar/MobileNav";
+import Footer from "./Components/Footer";
+import AppRoutes from "./Routes/AppRoutes";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className='h-screen w-screen bg-primary overflow-x-hidden'>
-      <Navbar/>
-      <MobileNav/>
-        <AppRoutes/>
-      <Footer/>
+    <div className="h-screen w-screen bg-primary overflow-x-hidden">
+      <Navbar />
+      <MobileNav />
+      <AppRoutes />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
