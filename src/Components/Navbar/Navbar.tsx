@@ -9,7 +9,7 @@ const Navbar = () => {
       </NavLink>
 
       <div className="ml-auto mr-6 mt-2">
-        <ul className="flex gap-x-6 ">
+        <ul className="flex gap-x-6 text-primary">
           <NavLink
             to="/"
             className={({ isActive }) =>
