@@ -26,7 +26,7 @@ const Browse = () => {
           <h1>Error</h1>
         ) : (
           data?.map((item: fetchItems, i: number) => (
-            <CarCard key={i} image={item.image} name={item.name} payload={item}/>
+            <CarCard key={i} image={item.image} name={item.name} />
           ))
         )}
       </div>
