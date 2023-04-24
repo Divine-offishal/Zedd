@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { BsFillBookmarkPlusFill } from 'react-icons/bs'
 
 const Navbar = () => {
   return (
@@ -38,6 +39,13 @@ const Navbar = () => {
           >
             <div className="h-auto w-auto px-2 py-1 rounded">
               <li>Repairs</li>
+            </div>
+          </NavLink>
+          <NavLink to='/saved' className={({ isActive }) =>
+              isActive ? "text-accent" : "text-primary"
+            }>
+            <div>
+              <BsFillBookmarkPlusFill className="text-3xl "/>
             </div>
           </NavLink>
         </ul>

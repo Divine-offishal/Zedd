@@ -4,6 +4,8 @@ import Home from '../Pages/Home'
 import Browse from '../Pages/Browse'
 import Accessories from '../Pages/Accessories'
 import Carpage from '../Pages/Carpage'
+import Saved from '../Pages/Saved'
+
 
 const AppRoutes = () => {
   return (
@@ -11,6 +13,7 @@ const AppRoutes = () => {
       <Route path='/' element={<Home/>}/>
       <Route path='/sales' element={<Browse/>}/>
       <Route path='/repairs' element={<Accessories/>}/>
+      <Route path='/saved' element={<Saved/>}/>
       <Route path='/cars/:car' element={<Carpage/>}/>
     </Routes>
   )
