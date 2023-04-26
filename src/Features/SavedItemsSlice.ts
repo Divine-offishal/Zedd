@@ -1,24 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+
+
+
+// Types
 type Item = {
-  id: number;
-  name: string;
-  qty: number;
+  id: number
+  name: string
+  image: string
+  qty: number
 };
 type State = {
   items: Item[];
 };
 
+
+// Checking local strorage
+const checkStorage = JSON.parse(localStorage.getItem('saved') || 'null')
+
+
 const initialState: State = {
-  items: [],
+  items: checkStorage !== null  ? checkStorage : [],
 };
 
 const SavedItemSlice = createSlice({
   name: "SavedItemPage",
   initialState,
   reducers: {
-    added: (state, action) => {
+    added: (state, action: PayloadAction<Item>) => {
       const product = action.payload;
+      
       const isAdded = state.items.find((x) => x.id === product.id);
       if (isAdded) {
         const modifiedItem = state.items.map((x) =>
