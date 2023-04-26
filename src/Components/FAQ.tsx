@@ -3,7 +3,7 @@ import { Accordion } from "@mantine/core";
 
 const FAQ = () => {
   return (
-    <div className="w-screen h-96">
+    <div className="w-screen h-auto">
       <h1 className="text-4xl font-bold text-center mt-10 mb-6">FAQs</h1>
 
       <Accordion className="bg-primary text-secondary">
