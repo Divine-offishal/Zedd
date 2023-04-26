@@ -1,22 +1,56 @@
-import React from 'react'
-import { Routes, Route} from 'react-router-dom'
-import Home from '../Pages/Home'
-import Browse from '../Pages/Browse'
-import Accessories from '../Pages/Accessories'
-import Carpage from '../Pages/Carpage'
-import Saved from '../Pages/Saved/Saved'
-
+import React, { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+const Home = lazy(() => import("../Pages/Home"));
+const Browse = lazy(() => import("../Pages/Browse"));
+const Accessories = lazy(() => import("../Pages/Accessories"));
+const Carpage = lazy(() => import("../Pages/Carpage"));
+const Saved = lazy(() => import("../Pages/Saved/Saved"));
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/sales' element={<Browse/>}/>
-      <Route path='/repairs' element={<Accessories/>}/>
-      <Route path='/saved' element={<Saved/>}/>
-      <Route path='/cars/:car' element={<Carpage/>}/>
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/sales"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Browse />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/repairs"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Accessories />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/saved"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Saved />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/cars/:car"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Carpage />
+          </Suspense>
+        }
+      />
     </Routes>
-  )
-}
+  );
+};
 
-export default AppRoutes
+export default AppRoutes;

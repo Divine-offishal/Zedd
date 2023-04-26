@@ -17,7 +17,7 @@ const MobileNav = () => {
   interface nav {
     name: string;
     path: string;
-    icon: React.ReactNode
+    icon: React.ReactElement
   }
 
   const navItems: nav[] = [

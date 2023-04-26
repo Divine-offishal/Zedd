@@ -9,6 +9,7 @@ type Item = {
   name: string
   image: string
   qty: number
+  price: number
 };
 type State = {
   items: Item[];
@@ -27,6 +28,8 @@ const SavedItemSlice = createSlice({
   name: "SavedItemPage",
   initialState,
   reducers: {
+
+    // Adding items
     added: (state, action: PayloadAction<Item>) => {
       const product = action.payload;
       
@@ -40,8 +43,28 @@ const SavedItemSlice = createSlice({
         state.items = [...state.items, { ...product, qty: 1 }];
       }
     },
+
+    // Clearing Cart
+    clear: (state) => {
+      state.items = []
+    },
+
+    // Reducing qty of items
+    reduce: (state, action: PayloadAction<Item>) => {
+      const product = action.payload;
+      
+      const checkQty = product.qty
+      if (checkQty > 1) {
+        const modifiedItem = state.items.map((x) =>
+          x.id === product.id ? { ...x, qty: x.qty - 1 } : x
+        );
+        state.items = [...modifiedItem];
+      } else {
+        state.items.filter((x) =>  x.id === product.id)
+      }
+    },
   },
 });
 
 export default SavedItemSlice.reducer
-export const {added} = SavedItemSlice.actions
+export const {added, clear, reduce} = SavedItemSlice.actions
