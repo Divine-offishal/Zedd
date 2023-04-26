@@ -16,11 +16,11 @@ type State = {
 
 
 // Checking local strorage
-const checkStorage = JSON.parse(localStorage.getItem('saved') || 'null')
+const checkStorage: Array<any> = JSON.parse(localStorage.getItem('saved') || 'null')
 
 
 const initialState: State = {
-  items: checkStorage !== null  ? checkStorage : [],
+  items: checkStorage || [],
 };
 
 const SavedItemSlice = createSlice({

@@ -24,7 +24,7 @@ const Accessories = () => {
   useEffect(() => {
     
     if (stateArray.length > 0) {
-      const saveToStorage = localStorage.setItem('item', JSON.stringify(stateArray))
+      localStorage.setItem('saved', JSON.stringify(stateArray))
     } 
   }, [stateArray])
   

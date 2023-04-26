@@ -4,7 +4,6 @@ import { useAppSelector} from '../../App/hooks'
 const SavedCard = () => {
 
   const stateArray = useAppSelector(state => state.savedItemReducer.items)
-  const checkStorage = JSON.parse(localStorage.getItem('saved') || 'null')
 
   return (
     <div className='w-screen h-auto mt-32 '>
