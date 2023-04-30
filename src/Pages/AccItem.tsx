@@ -2,18 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Images } from "../assets/Images/Images";
 import useSWR from "swr";
 import { useParams } from "react-router-dom";
-
-// Interfaces
 import { dataType } from "../Components/Interfaces/interfaces";
 
-
-const Carpage = () => {
+const AccItem = () => {
 
   // Getting url params
   const { slug } = useParams();
 
-
-  // Fetching data
   const fetcher = (...args: [RequestInfo, RequestInit?]) =>
     fetch(...args).then((res) => res.json());
 
@@ -22,10 +17,10 @@ const Carpage = () => {
     fetcher
   );
 
+
   const [arrayedData, setArrayedData] = useState<Array<dataType>>([]);
 
   useEffect(() => {
-    // If data is available, store in arrayedData
     if (data) {
       setArrayedData([data]);
     }
@@ -33,8 +28,9 @@ const Carpage = () => {
 
   return (
     <div
-      className="h-screen w-screen mt-32">
-        
+      className="h-screen w-screen mt-32"
+      onClick={() => console.log(arrayedData)}
+    >
       {isLoading ? (
         <h1 className="text-center text-4xl text-secondary">Loading...</h1>
       ) : error ? (
@@ -57,16 +53,5 @@ const Carpage = () => {
   );
 };
 
-export default Carpage;
 
-// (arrayedData.map((item, i) => (
-//   <div key={i}>
-//     <span className="grid justify-items-center">
-//       <img src={item.image} alt="" className="w-96 h-96" />
-//     </span>
-
-//     <h1 className="text-center text-3xl font-semi-bold mt-7">{item.name}</h1>
-//     <p className="text-center mt-8">{item.description}</p>
-//   </div>
-// ))
-// )
+export default AccItem

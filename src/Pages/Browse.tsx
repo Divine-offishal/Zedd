@@ -2,13 +2,10 @@ import React, { useEffect } from "react";
 import CarCard from "../Components/Cards/CarCard";
 import useSWR from "swr";
 import { useAppSelector } from "../App/hooks";
+import { NavLink } from "react-router-dom";
+import { fetchItems } from "../Components/Interfaces/interfaces";
 
 const Browse = () => {
-  interface fetchItems {
-    name: string;
-    image: string;
-    payload: object
-  }
 
   const fetcher = (...args: [RequestInfo, RequestInit?]) =>
     fetch(...args).then((res) => res.json());
@@ -36,7 +33,9 @@ const Browse = () => {
           <h1>Error</h1>
         ) : (
           data?.map((item: fetchItems, i: number) => (
-            <CarCard key={i} image={item.image} name={item.name} payload={item}/>
+            <NavLink to={`/cars/${item.id}`}>
+              <CarCard key={i} image={item.image} name={item.name} price={item.price} payload={item}/>
+            </NavLink>
           ))
         )}
       </div>

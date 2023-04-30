@@ -8,6 +8,7 @@ const Accessories = () => {
   interface fetchItems {
     name: string;
     image: string
+    price: string
     payload: object
   }
 
@@ -38,7 +39,7 @@ const Accessories = () => {
           <h1>Error</h1>
         ) : (
           data?.map((item: fetchItems, i: number) => (
-            <CarCard key={i} image={item.image} name={item.name} payload={item}/>
+            <CarCard key={i} image={item.image} name={item.name} price={item.price} payload={item}/>
           ))
         )}
       </div>

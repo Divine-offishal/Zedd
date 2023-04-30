@@ -8,48 +8,21 @@ const Saved = lazy(() => import("../Pages/Saved/Saved"));
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Home />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/sales"
-        element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Browse />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/repairs"
-        element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Accessories />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/saved"
-        element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Saved />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/cars/:car"
-        element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Carpage />
-          </Suspense>
-        }
-      />
-    </Routes>
+    <Suspense
+      fallback={
+        <div className="h-screen w-screen text-center text-secondary">
+          Loading...
+        </div>
+      }
+    >
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sales" element={<Browse />} />
+        <Route path="/repairs" element={<Accessories />} />
+        <Route path="/saved" element={<Saved />} />
+        <Route path="/cars/:slug" element={<Carpage />} />
+      </Routes>
+    </Suspense>
   );
 };
 
