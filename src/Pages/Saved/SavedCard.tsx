@@ -16,6 +16,7 @@ const SavedCard = () => {
             <h1 className=" md:block hidden">{item.name}</h1>
 
             <h1 className="text-xl mt-4">price: {item.price}</h1>
+            <h1 className="text-xl mt-4">Quantity: {item.qty}</h1>
           </div>
         </div>
       ))}

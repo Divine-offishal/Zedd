@@ -10,3 +10,7 @@ export type Item = {
 export type State = {
   items: Item[];
 }
+
+export type SignInAuth = {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}

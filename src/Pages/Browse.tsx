@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { useAppSelector } from "../App/hooks";
 import { NavLink } from "react-router-dom";
 import { fetchItems } from "../Components/Interfaces/interfaces";
+import { Toaster, toast } from 'react-hot-toast'
 
 const Browse = () => {
 
@@ -26,15 +27,16 @@ const Browse = () => {
 
   return (
     <div className="w-screen min-h-screen mt-32">
+      <Toaster/>
       <div className=" grid md:grid-cols-2 justify-items-center gap-y-6">
         {isLoading ? (
           <h1>Loading</h1>
         ) : error ? (
-          <h1>Error</h1>
+          toast.error('There is an error')
         ) : (
           data?.map((item: fetchItems, i: number) => (
             <NavLink to={`/cars/${item.id}`}>
-              <CarCard key={i} image={item.image} name={item.name} price={item.price} payload={item}/>
+              <CarCard key={i} image={item.image} name={item.name} price={item.price}/>
             </NavLink>
           ))
         )}

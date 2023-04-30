@@ -13,6 +13,7 @@
     "@mantine/core": "^6.0.7",
     "@mantine/hooks": "^6.0.7",
     "@reduxjs/toolkit": "^1.9.5",
+    "firebase": "^9.21.0",
     "framer-motion": "^10.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
