@@ -61,6 +61,9 @@ export const useAutLogin = (auth: any, email: string, password: string): SignInA
 
 // Google Signin
 export const useGoogle = (auth: any, provider: GoogleAuthProvider): GoogleAuth => {
+
+  const navigate = useNavigate()
+
   const handleGoogleAuth = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     signInWithPopup(auth, provider)
@@ -70,8 +73,7 @@ export const useGoogle = (auth: any, provider: GoogleAuthProvider): GoogleAuth =
       const token = credential?.accessToken;
       // The signed-in user info.
       const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
+      navigate('/')
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -92,10 +94,10 @@ export const useGoogle = (auth: any, provider: GoogleAuthProvider): GoogleAuth =
 
 export const useGithub = ( auth: any, gitProvider: GithubAuthProvider): GitAuth => {
 
+  const navigate = useNavigate()
 
   const handleGitAuth = (e: MouseEvent<HTMLButtonElement>) => {
 
-  // const navigate = useNavigate()
 
     signInWithPopup(auth, gitProvider)
       .then((result) => {
@@ -105,8 +107,7 @@ export const useGithub = ( auth: any, gitProvider: GithubAuthProvider): GitAuth 
     
         // The signed-in user info.
         const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        console.log(user)
       }).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
