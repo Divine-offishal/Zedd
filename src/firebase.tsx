@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from 'firebase/auth'
+import { getAuth, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,3 +20,4 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth();
 export const provider = new GoogleAuthProvider();
+export const gitProvider = new GithubAuthProvider();

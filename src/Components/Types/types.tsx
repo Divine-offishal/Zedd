@@ -14,3 +14,11 @@ export type State = {
 export type SignInAuth = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
+
+export type GoogleAuth = {
+  handleGoogleAuth: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+export type GitAuth = {
+  handleGitAuth: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}

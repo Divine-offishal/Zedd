@@ -1,18 +1,18 @@
 import React, { FormEvent, useState } from "react";
-import { auth } from "../../firebase";
+import { auth, provider, gitProvider } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
-import { useAuth } from "../../App/hooks";
+import { BsGithub } from "react-icons/bs";
+import { useAuth, useGoogle, useGithub } from "../../App/hooks";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { handleSubmit } = useAuth(auth, email, password)
+  const { handleSubmit } = useAuth(auth, email, password);
 
-  
-
-  const googleSignUp = () => {};
+  const { handleGoogleAuth } = useGoogle(auth, provider);
+  const { handleGitAuth } = useGithub(auth, gitProvider);
 
   return (
     <div>
@@ -52,7 +52,7 @@ const SignUp = () => {
             </div>
 
             <button className=" px-3 py-1 mt-6 bg-secondary text-accent w-[10em] rounded-md">
-              SignIn
+              Sign Up
             </button>
           </form>
 
@@ -60,12 +60,22 @@ const SignUp = () => {
             <h1 className="text-center text-xl text-secondary">Or</h1>
             <button
               className=" px-3 py-1 mt-4 flex justify-center bg-secondary mx-auto h-10 rounded-md text-accent w-[20em] pt-2"
-              onClick={googleSignUp}
+              onClick={handleGoogleAuth}
             >
               <span className="mr-2 mt-1">
                 <FcGoogle />
               </span>
               Sign up with Google
+            </button>
+
+            <button
+              className=" px-3 py-1 mt-4 flex justify-center bg-secondary mx-auto h-10 rounded-md text-accent w-[20em] pt-2"
+              onClick={handleGitAuth}
+            >
+              <span className="mr-2 mt-1">
+                <BsGithub />
+              </span>
+              Sign up with Github
             </button>
           </span>
         </span>
