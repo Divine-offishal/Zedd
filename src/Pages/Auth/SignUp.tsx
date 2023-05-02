@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
 import { useAuth, useGoogle, useGithub } from "../../App/hooks";
+import { NavLink } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -50,6 +51,8 @@ const SignUp = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+
+            <span className="flex mt-4 text-secondary">Signed up already? <NavLink to='/login'><h1 className="text-accent ml-2">login</h1></NavLink></span>
 
             <button className=" px-3 py-1 mt-6 bg-secondary text-accent w-[10em] rounded-md">
               Sign Up

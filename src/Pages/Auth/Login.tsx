@@ -2,27 +2,14 @@ import React, { FormEvent, useState } from 'react'
 import Form from '../../Components/Form'
 import { auth } from '../../firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import { useAutLogin } from '../../App/hooks'
 
 const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log(user)
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage)
-    });
-  }
+  const {handleSubmit} = useAutLogin(auth, email, password) 
 
   return (
     <div>
@@ -42,7 +29,7 @@ const Login = () => {
             </div>
 
             <button className=' px-3 py-1 mt-4 bg-secondary text-accent w-[10em]'>
-              SignIn
+              Login
             </button>
           </form>
         </span>
