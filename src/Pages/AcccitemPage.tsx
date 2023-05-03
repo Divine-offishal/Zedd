@@ -39,7 +39,7 @@ const AccItem = () => {
 
   return (
     <div
-      className="h-screen w-screen mt-32"
+      className="min-h-screen w-screen mt-32"
       onClick={() => console.log(arrayedData)}
     >
       <Toaster/>

@@ -3,10 +3,22 @@ import SavedCard from "./SavedCard";
 import EmptyPage from "./EmptyPage";
 import { useAppSelector, useAppDispatch } from "../../App/hooks";
 import { clear } from "../../Features/SavedItemsSlice";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Saved = () => {
   const stateArray = useAppSelector((state) => state.savedItemReducer.items);
   const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    signOut(auth)
+    .then(() => {
+      console.log('Signed out')
+    })
+    .catch(() => {
+      console.error('Sorry... You are stuck here')
+    })
+  }
 
   return (
     <div className="w-screen h-auto mt-32 flex flex-col justify-center">
@@ -31,6 +43,10 @@ const Saved = () => {
           </button>
         </span>
       )}
+
+      <span className="flex justify-center" onClick={handleLogout}>
+        <button>Logout</button>
+      </span>
     </div>
   );
 };

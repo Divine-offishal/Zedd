@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import AccItem from "../Pages/AcccitemPage";
+
 const Home = lazy(() => import("../Pages/Home"));
 const Browse = lazy(() => import("../Pages/Browse"));
 const Accessories = lazy(() => import("../Pages/Accessories"));
@@ -29,6 +30,8 @@ const AppRoutes = () => {
         {/* Dynamic Routes */}
         <Route path="/cars/:slug" element={<Carpage />} />
         <Route path="/parts/:slug" element={<AccItem />} />
+
+        <Route path="*" element={<div className="h-screen w-screen">There is an error</div>} />
       </Routes>
     </Suspense>
   );

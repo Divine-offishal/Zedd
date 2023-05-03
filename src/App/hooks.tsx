@@ -46,7 +46,7 @@ export const useAutLogin = (auth: any, email: string, password: string): SignInA
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate('/')
+        navigate('/saved')
         // ...
       })
       .catch((error) => {
@@ -73,7 +73,7 @@ export const useGoogle = (auth: any, provider: GoogleAuthProvider): GoogleAuth =
       const token = credential?.accessToken;
       // The signed-in user info.
       const user = result.user;
-      navigate('/')
+      navigate('/saved')
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -82,6 +82,7 @@ export const useGoogle = (auth: any, provider: GoogleAuthProvider): GoogleAuth =
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
+      console.log(errorMessage)
       // ...
     });
   }
@@ -107,7 +108,7 @@ export const useGithub = ( auth: any, gitProvider: GithubAuthProvider): GitAuth 
     
         // The signed-in user info.
         const user = result.user;
-        console.log(user)
+        navigate('/saved')
       }).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
@@ -116,6 +117,7 @@ export const useGithub = ( auth: any, gitProvider: GithubAuthProvider): GitAuth 
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GithubAuthProvider.credentialFromError(error);
+        console.log(errorCode. errorMessage)
         // ...
     });
   }

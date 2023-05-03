@@ -38,7 +38,7 @@ const Carpage = () => {
 
   return (
     <div
-      className="h-screen w-screen mt-32">
+      className="min-h-screen w-screen mt-32">
 
         <Toaster/>
       {isLoading ? (
