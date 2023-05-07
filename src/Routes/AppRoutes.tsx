@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import AccItem from "../Pages/AcccitemPage";
+import PrivateRoute from "./PrivateRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 const Home = lazy(() => import("../Pages/Home"));
 const Browse = lazy(() => import("../Pages/Browse"));
@@ -23,9 +25,11 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/sales" element={<Browse />} />
         <Route path="/repairs" element={<Accessories />} />
-        <Route path="/saved" element={<Saved />} />
         <Route path="/signup" element={<SignUp/> } />
         <Route path="/login" element={<Login/>} />
+        <Route element={<PrivateRoute/>}>
+          <Route path="/saved" element={<Saved />} />
+        </Route>
         
         {/* Dynamic Routes */}
         <Route path="/cars/:slug" element={<Carpage />} />

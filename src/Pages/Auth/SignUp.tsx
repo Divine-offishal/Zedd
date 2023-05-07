@@ -72,7 +72,7 @@ const SignUp = () => {
             </button>
 
             <button
-              className=" px-3 py-1 mt-4 flex justify-center bg-secondary mx-auto h-10 rounded-md text-accent w-[20em] pt-2"
+              className=" px-3 py-1 mt-4 flex justify-center bg-secondary mx-auto h-10 rounded-md text-accent w-[20em] pt-2 mb-10"
               onClick={handleGitAuth}
             >
               <span className="mr-2 mt-1">

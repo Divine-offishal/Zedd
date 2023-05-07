@@ -108,6 +108,7 @@ export const useGithub = ( auth: any, gitProvider: GithubAuthProvider): GitAuth 
     
         // The signed-in user info.
         const user = result.user;
+        console.log(user)
         navigate('/saved')
       }).catch((error) => {
         // Handle Errors here.
