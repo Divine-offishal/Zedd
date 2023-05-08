@@ -4,6 +4,7 @@ import Sales from '../Components/Sales'
 import Repairs from '../Components/Repairs'
 import Reviews from '../Components/Reviews'
 import FAQ from '../Components/FAQ'
+import PageTransition from '../Components/Animations/PageTransitions'
 
 const Home = () => {
 
@@ -12,13 +13,16 @@ const Home = () => {
   }, [])
 
   return (
-    <div>
-      <Hero/>
-      <Sales/>
-      <Repairs/>
-      <Reviews/>
-      <FAQ/>
-    </div>
+
+    <PageTransition>
+      <div>
+        <Hero/>
+        <Sales/>
+        <Repairs/>
+        <Reviews/>
+        <FAQ/>
+      </div>
+    </PageTransition>
   )
 }
 

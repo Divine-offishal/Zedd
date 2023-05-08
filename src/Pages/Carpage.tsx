@@ -8,6 +8,7 @@ import { added } from "../Features/SavedItemsSlice";
 
 // Interfaces
 import { dataType } from "../Components/Interfaces/interfaces";
+import PageTransition from "../Components/Animations/PageTransitions";
 
 
 const Carpage = () => {
@@ -37,34 +38,38 @@ const Carpage = () => {
   }, [data]);
 
   return (
-    <div
-      className="min-h-screen w-screen mt-32">
 
-        <Toaster/>
-      {isLoading ? (
-        <h1 className="text-center text-4xl text-secondary">Loading...</h1>
-      ) : error ? (
-        toast.error('There is an error in data fetching')
-      ) : (
-        arrayedData.map((item, i) => (
-          <div key={i}>
-            <span className="grid justify-items-center">
-              <img src={item.image} alt="" className="w-96 h-96" />
-            </span>
+    <PageTransition>
 
-            <h1 className="text-center text-3xl font-semi-bold mt-7">
-              {item.name}
-            </h1>
+      <div
+        className="min-h-screen w-screen mt-32">
 
-            <span className="grid justify-items-center my-4" onClick={() => dispatch(added(data))}>
-              <button className="text-accent bg-secondary px-2 py-1 hover:text-secondary hover:bg-accent rounded-md">Add to cart</button>
-            </span>
+          <Toaster/>
+        {isLoading ? (
+          <h1 className="text-center text-4xl text-secondary">Loading...</h1>
+        ) : error ? (
+          toast.error('There is an error in data fetching')
+        ) : (
+          arrayedData.map((item, i) => (
+            <div key={i}>
+              <span className="grid justify-items-center">
+                <img src={item.image} alt="" className="w-96 h-96" />
+              </span>
 
-            <p className="text-center mt-8 px-2">{item.description}</p>
-          </div>
-        ))
-      )}
-    </div>
+              <h1 className="text-center text-3xl font-semi-bold mt-7">
+                {item.name}
+              </h1>
+
+              <span className="grid justify-items-center my-4" onClick={() => dispatch(added(data))}>
+                <button className="text-accent bg-secondary px-2 py-1 hover:text-secondary hover:bg-accent rounded-md">Add to cart</button>
+              </span>
+
+              <p className="text-center mt-8 px-2">{item.description}</p>
+            </div>
+          ))
+        )}
+      </div>
+    </PageTransition>
   );
 };
 
