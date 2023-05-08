@@ -3,6 +3,7 @@ import type { RootState, AppDispatch } from './Store'
 import { FormEvent, MouseEvent } from 'react';
 import { SignInAuth, GoogleAuth, GitAuth } from '../Components/Types/types';
 import { useNavigate } from 'react-router-dom'
+import { FormikHelpers } from 'formik';
 
 
 import {  GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, GithubAuthProvider, getRedirectResult, signInWithEmailAndPassword } from "firebase/auth";
@@ -36,33 +37,55 @@ export const useAuth = (auth: any, email: string, password: string): SignInAuth 
   return { handleSubmit }
 }
 
-export const useAutLogin = (auth: any, email: string, password: string): SignInAuth => {
+// export const useAutLogin = (auth: any, email: string, password: string): SignInAuth => {
 
-  const navigate = useNavigate()
+//   const navigate = useNavigate()
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        navigate('/saved')
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
-  };
+//   const handleSubmit = async (values: {email: string, password: string}, { setSubmitting }: FormikHelpers<{ email: string; password: string }>) => {
+//     try {
+//       const { email, password } = values;
+//       await createUserWithEmailAndPassword(auth, email, password);
+//       // toast.success('Logged in successfully!');
+//       navigate('/login')
+//     } catch (error: any) {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       // toast.error(errorCode, errorMessage)
+//     } finally {
+//       setSubmitting(false);
+//     }
+//   }
 
-  return { handleSubmit }
-}
+//   const signInAuth: SignInAuth = {
+//     handleSubmit: handleSubmit,
+//   }
+
+  
+//   return  signInAuth 
+// }
+// const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+//   e.preventDefault();
+//   signInWithEmailAndPassword(auth, email, password)
+//     .then((userCredential) => {
+//       // Signed in
+//       const user = userCredential.user;
+//       navigate('/saved')
+//       // ...
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       console.log(errorCode, errorMessage);
+//     });
+// };
 
 // Google Signin
 export const useGoogle = (auth: any, provider: GoogleAuthProvider): GoogleAuth => {
 
   const navigate = useNavigate()
+
+  
+
 
   const handleGoogleAuth = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

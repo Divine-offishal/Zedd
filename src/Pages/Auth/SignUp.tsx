@@ -4,16 +4,40 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
 import { useAuth, useGoogle, useGithub } from "../../App/hooks";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
+import { Formik, Form, Field, ErrorMessage, FormikHelpers} from 'formik'
+import { validationSchema } from './validationSchema'
 
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const { handleSubmit } = useAuth(auth, email, password);
+  const navigate = useNavigate()
 
   const { handleGoogleAuth } = useGoogle(auth, provider);
   const { handleGitAuth } = useGithub(auth, gitProvider);
+
+  interface FormValues {
+    email: string;
+    password: string;
+  }
+  
+
+  const handleSubmit= async (values: FormValues,
+    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void })=> {
+
+    try {
+      const { email, password } = values;
+      await createUserWithEmailAndPassword(auth, email, password);
+      // toast.success('Logged in successfully!');
+      navigate('/login')
+    } catch (error) {
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
+      // toast.error(errorCode, errorMessage)
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
 
   return (
     <div>
@@ -22,42 +46,30 @@ const SignUp = () => {
           Create an account
         </h1>
         <span>
-          <form
-            className=" grid justify-items-center mb-4"
+          <Formik
+            initialValues={{ email: '', password: '' }}
+            validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
-            <div className="mt-20">
-              <label className="block text-secondary" htmlFor="email">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                className="md:w-[45em] w-[20em] h-12 border-2 border-secondary bg-primary px-6 text-secondary"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            {({isSubmitting}) => (
+              <Form className=" grid justify-items-center mb-4">
+                <div className="grid justify-items-center mt-20">
+                  <Field type="email" name="email" placeholder="Email" className="md:w-[45em] w-[20em] h-12 border-2 border-secondary bg-primary px-6 text-secondary"/>
+                  <ErrorMessage name="email" component="div" className='text-red-500 text-xl font-bold mx-auto'/>
+                </div>
+                <div className='w-full grid justify-items-center my-4 mt-10'>
+                  <Field type="password" name="password" placeholder="password" className="md:w-[45em] w-[20em] h-12 border-2 border-secondary bg-primary px-6 text-secondary"/>
+                  <ErrorMessage name="password" component="div" className='text-red-500 text-xl font-bold'/>
+                </div>
 
-            <div className="mt-20">
-              <label className="block text-secondary" htmlFor="password">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                className="md:w-[45em] w-[20em] h-12 border-2 border-secondary bg-primary px-6 text-secondary"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-
-            <span className="flex mt-4 text-secondary">Signed up already? <NavLink to='/login'><h1 className="text-accent ml-2">login</h1></NavLink></span>
-
-            <button className=" px-3 py-1 mt-6 bg-secondary text-accent w-[10em] rounded-md">
-              Sign Up
-            </button>
-          </form>
+                <span className="flex mt-4 text-secondary">Signed up already? <NavLink to='/login'><h1 className="text-accent ml-2">login</h1></NavLink></span>
+                
+                <span>
+                  <button type='submit' className=" px-3 py-1 mt-6 bg-secondary text-accent w-[10em] rounded-md disabled:text-accent/30" disabled={isSubmitting}>Submit</button>
+                </span>
+              </Form>
+            )}
+            </Formik>
 
           <span className="mt-6">
             <h1 className="text-center text-xl text-secondary">Or</h1>

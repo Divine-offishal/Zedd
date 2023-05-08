@@ -1,3 +1,5 @@
+import { FormikHelpers } from 'formik';
+
 export type Item = {
   id: number;
   name: string;
@@ -12,7 +14,7 @@ export type State = {
 }
 
 export type SignInAuth = {
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>, { setSubmitting }: FormikHelpers<{ email: string; password: string }>) => void;
 }
 
 export type GoogleAuth = {
